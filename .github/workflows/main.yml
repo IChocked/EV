@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Python Formatting
+
+# Controls when the action will run. 
+on: 
+  # Triggers the workflow on push or pull request events but only for the master branch
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  autopep8:
+    # Check if the PR is not from a fork
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: autopep8
+        id: autopep8
+        uses: peter-evans/autopep8@v1
+        with:
+          args: --exit-code --recursive --in-place --aggressive --aggressive .
+      - name: Commit autopep8 changes
+        if: steps.autopep8.outputs.exit-code == 2
+        run: |
+          git config --global user.name 'Github Actions'
+          git config --global user.email 'bharde@me.com'
+          git commit -am "Automated autopep8 fixes"
+          git push
