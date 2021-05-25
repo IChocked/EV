@@ -1,5 +1,5 @@
-#this file works completely perfectly
-#do not mess up this file
+# this file works completely perfectly
+# do not mess up this file
 
 import pyrebase
 

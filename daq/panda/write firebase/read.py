@@ -1,8 +1,8 @@
-#this file works completely perfectly
-#do not mess up this file
+# this file works completely perfectly
+# do not mess up this file
 
 
-#THIS FILE READS DATA FROM FIREBASE's SPEED DATA POINT AND PRINTS THE VALUE
+# THIS FILE READS DATA FROM FIREBASE's SPEED DATA POINT AND PRINTS THE VALUE
 
 import pyrebase
 
@@ -20,4 +20,4 @@ db = firebase.database()
 
 users = db.child("speed").get()
 
-print(users.val()) 
+print(users.val())

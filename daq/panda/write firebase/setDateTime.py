@@ -26,5 +26,4 @@ timeName = current_time
 
 db.update(
     {"Latest Trial": trialName,
-    "Latest Time": timeName})
-
+     "Latest Time": timeName})
