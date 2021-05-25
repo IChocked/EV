@@ -21,8 +21,8 @@ num = int(trialName[1]) + 1
 trialName = trialName[0] + " " + (str(num))
 
 while (True):
-##    teensy = serial.Serial('/dev/ACM1', baudrate = 9600, timeout = 1)
-##    nano = serial.Serial('/dev/USB1', baudrate = 9600, timeout = 1)
+    ##    teensy = serial.Serial('/dev/ACM1', baudrate = 9600, timeout = 1)
+    ##    nano = serial.Serial('/dev/USB1', baudrate = 9600, timeout = 1)
 
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
@@ -48,61 +48,61 @@ while (True):
     newRPM = 3
     newVolt = 1
     newCurrent = 1.1
-    newPower = newVolt*newCurrent
+    newPower = newVolt * newCurrent
 
     db.update(
         {"Latest Trial": trialName,
-        "Latest Time": timeName})
+         "Latest Time": timeName})
 
     db.child(trialName).child(timeName).child("battery").update(
-                            {"amp": 0,
-                            "remaining": 0,
-                            "temp": 0,
-                            "volt": 0})
+        {"amp": 0,
+         "remaining": 0,
+         "temp": 0,
+         "volt": 0})
 
     db.child(trialName).child(timeName).child("driver").update(
-                            {"image": "./images/Caroline.jpg",
-                            "message": "I Believe In You!!!",
-                            "name": "Caroline",
-                            "phone": "999-999-999",
-                            "social": "@CarolineDriver"})
+        {"image": "./images/Caroline.jpg",
+         "message": "I Believe In You!!!",
+         "name": "Caroline",
+         "phone": "999-999-999",
+         "social": "@CarolineDriver"})
 
     db.child(trialName).child(timeName).child("gps").update(
-                            {"lat": newLat,
-                            "long": newLong})
+        {"lat": newLat,
+         "long": newLong})
 
     db.child(trialName).child(timeName).child("joulemeter").update(
-                            {"amp": newCurrent,
-                            "avg": 0,
-                            "instant": newPower,
-                            "peak": 0,
-                            "volt": newVolt})
+        {"amp": newCurrent,
+         "avg": 0,
+         "instant": newPower,
+         "peak": 0,
+         "volt": newVolt})
 
     db.child(trialName).child(timeName).child("lap").update(
-                            {"current": 0,
-                            "fastest": 0,
-                            "number": 0,
-                            "remaining": 0,
-                            "slowest": 0,
-                            "total": 0})
+        {"current": 0,
+         "fastest": 0,
+         "number": 0,
+         "remaining": 0,
+         "slowest": 0,
+         "total": 0})
 
     db.child(trialName).child(timeName).child("motor").update(
-                            {"bhp": 0,
-                            "temp": 0,
-                            "volt": 0})
+        {"bhp": 0,
+         "temp": 0,
+         "volt": 0})
 
     db.child(trialName).child(timeName).child("speed").update(
-                            {"acceleration": 0,
-                            "avg": 0,
-                            "rpm": newRPM,
-                            "speed": newSpeed,
-                            "throttle": 0})
+        {"acceleration": 0,
+         "avg": 0,
+         "rpm": newRPM,
+         "speed": newSpeed,
+         "throttle": 0})
 
     db.child(trialName).child(timeName).child("track").update(
-                            {"name": "Parking Garage",
-                            "trial": 1,})
+        {"name": "Parking Garage",
+         "trial": 1, })
 
     db.child(trialName).child(timeName).child("weather").update(
-                            {"humidity": "15",
-                            "temp": 86,
-                            "weather": "Sunny"})
+        {"humidity": "15",
+         "temp": 86,
+         "weather": "Sunny"})

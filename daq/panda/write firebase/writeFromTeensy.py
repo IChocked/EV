@@ -16,16 +16,16 @@ db = firebase.database()
 runSpeed = True
 newSpeed = 0
 
-s = serial.Serial('COM6', baudrate = 9600, timeout = 1)
+s = serial.Serial('COM6', baudrate=9600, timeout=1)
 
-while (runSpeed == True):
-     res = s.readline().decode('ascii')
-     print(res)
+while (runSpeed):
+    res = s.readline().decode('ascii')
+    print(res)
 
-     newSpeed = res
-     db.child(trialName).child(timeName).child("speed").update(
-                            {"acceleration": 0,
-                            "avg": 0,
-                            "brake": 0,
-                            "speed": newSpeed,
-                            "throttle": 0})
+    newSpeed = res
+    db.child(trialName).child(timeName).child("speed").update(
+        {"acceleration": 0,
+         "avg": 0,
+         "brake": 0,
+         "speed": newSpeed,
+         "throttle": 0})
