@@ -3,7 +3,7 @@
 name: Python Formatting
 
 # Controls when the action will run. 
-on: [pull_reqeust]
+on: pull_reqeust
 # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -38,7 +38,7 @@ jobs:
           name: "format code"
 
 # run on pull requests to develop
-on: [pull_request]
+on: pull_request
 
 jobs:
   format:
