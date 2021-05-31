@@ -3,7 +3,7 @@
 name: Python Formatting
 
 on: 
-  pull_reqeust: 
+  pull_request: 
     branches:
       - main
       - master
@@ -40,7 +40,7 @@ jobs:
 
 # run on pull requests to develop
 on: 
-  pull_reqeust: 
+  pull_request: 
     branches:
       - main
       - master
