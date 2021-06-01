@@ -1,28 +1,18 @@
-# TODO: change the action to what makes the most sense for avoiding future merge conflicts
-
-name: Python Formatting
+name: Formatting
 
 on: 
   pull_request: 
     branches:
       - main
       - master
-  push:
-    branches:
-      - main
-      - master
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   autopep8:
     # Check if the PR is not from a fork
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
@@ -37,10 +27,9 @@ jobs:
         run: |
           git config --global user.name 'Github Actions'
           git config --global user.email 'bharde@me.com'
-          git commit -am "Automated autopep8 fixes"
+          git commit -am "Automated autopep8 reformatting. See actions for more details"
           git push
 
-          name: "format code"
   clang-format:
       name: clang-format Code Formatter
       runs-on: ubuntu-latest
@@ -57,8 +46,8 @@ jobs:
           npm install
           npm install clang-format
           echo "setting up git config"
-          git config user.name Brian
-          git config user.email bharde@me.com
+          git config --global user.name 'Github Actions'
+          git config --global user.email 'bharde@me.com'
           echo "finding c++ and arduino files"
           (git ls-tree --full-tree -r HEAD | grep -e "\.\(c\|h\|hpp\|cpp\|ino\)\$" | cut -f 2) > /tmp/temp.txt
           cat /tmp/temp.txt
