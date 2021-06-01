@@ -61,10 +61,10 @@ jobs:
           git config user.email bharde@me.com
           echo "finding c++ and arduino files"
           (git ls-tree --full-tree -r HEAD | grep -e "\.\(c\|h\|hpp\|cpp\|ino\)\$" | cut -f 2) > temp.txt
-          cat temp.txt
+          cat /tmp/temp.txt
           echo "formatting c++ and arduino files"
-          cat temp.txt | xargs -t -I % clang-format -i %
-          rm temp.txt
+          cat /tmp/temp.txt | xargs -t -I % clang-format -i %
+          rm /tmp/temp.txt
           echo "commiting formatted files and pushing"
           git add -A 
           git commit -m "Clang-format reformatting. See actions for more details"
