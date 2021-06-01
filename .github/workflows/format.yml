@@ -41,11 +41,22 @@ jobs:
           git push
 
           name: "format code"
-  lint:
+  clang-format:
       name: clang-format Code Formatter
       runs-on: ubuntu-latest
       steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
       - name: Clang Code Formatter
-        uses: ivanludvig/clang-format-action@v1.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          apt-get update
+          apt-get install npm
+          apt-get install git
+          npm install -g npm
+          git config user.name Brian
+          git config user.email bharde@me.com
+          SRC=$(git ls-tree --full-tree -r HEAD | grep -e "\.\(c\|h\|hpp\|cpp\|ino\)\$" | cut -f 2)
+          echo $SRC | xargs -I % clang-format -i %
+          git -A 
+          git commit -m "Clang-format reformatting. See actions for more details"
+          git push
