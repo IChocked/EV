@@ -38,15 +38,7 @@ jobs:
 
           name: "format code"
 
-# run on pull requests to develop
-on: 
-  pull_request: 
-    branches:
-      - main
-      - master
-
-jobs:
-  format:
+  clang-format:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
