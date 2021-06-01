@@ -53,7 +53,7 @@ jobs:
 
       - name: Clang Code Formatter
         run: |
-          npm install -g clang-format
+          npm install clang-format
           git config user.name Brian
           git config user.email bharde@me.com
           SRC=$(git ls-tree --full-tree -r HEAD | grep -e "\.\(c\|h\|hpp\|cpp\|ino\)\$" | cut -f 2)
