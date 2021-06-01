@@ -66,6 +66,6 @@ jobs:
           cat temp.txt | xargs -t -I % clang-format -i %
           rm temp.txt
           echo "commiting formatted files and pushing"
-          git -A 
+          git add -A 
           git commit -m "Clang-format reformatting. See actions for more details"
           git push
