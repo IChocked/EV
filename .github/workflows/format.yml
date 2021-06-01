@@ -63,7 +63,7 @@ jobs:
           SRC=$(git ls-tree --full-tree -r HEAD | grep -e "\.\(c\|h\|hpp\|cpp\|ino\)\$" | cut -f 2)
           echo $SRC
           echo "formatting c++ and arduino files"
-          echo $SRC | xargs -I % clang-format -i %
+          echo $SRC | xargs -t -I % clang-format -i %
           echo "commiting formatted files and pushing"
           git -A 
           git commit -m "Clang-format reformatting. See actions for more details"
