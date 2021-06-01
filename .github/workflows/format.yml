@@ -60,7 +60,7 @@ jobs:
           git config user.name Brian
           git config user.email bharde@me.com
           echo "finding c++ and arduino files"
-          (git ls-tree --full-tree -r HEAD | grep -e "\.\(c\|h\|hpp\|cpp\|ino\)\$" | cut -f 2) > temp.txt
+          (git ls-tree --full-tree -r HEAD | grep -e "\.\(c\|h\|hpp\|cpp\|ino\)\$" | cut -f 2) > /tmp/temp.txt
           cat /tmp/temp.txt
           echo "formatting c++ and arduino files"
           cat /tmp/temp.txt | xargs -t -I % clang-format -i %
