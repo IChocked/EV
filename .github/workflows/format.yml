@@ -47,12 +47,11 @@ jobs:
       steps:
       - name: Check out the code
         uses: actions/checkout@v2
+      - name: install clang-format with npm
+        uses: actions/setup-node@v2
+        run: npm install -g clang-format
       - name: Clang Code Formatter
         run: |
-          #apt-get update
-          #apt-get install npm
-          #apt-get install git
-          npm install -g npm
           git config user.name Brian
           git config user.email bharde@me.com
           SRC=$(git ls-tree --full-tree -r HEAD | grep -e "\.\(c\|h\|hpp\|cpp\|ino\)\$" | cut -f 2)
