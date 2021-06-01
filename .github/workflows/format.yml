@@ -49,9 +49,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Clang Code Formatter
         run: |
-          apt-get update
-          apt-get install npm
-          apt-get install git
+          #apt-get update
+          #apt-get install npm
+          #apt-get install git
           npm install -g npm
           git config user.name Brian
           git config user.email bharde@me.com
