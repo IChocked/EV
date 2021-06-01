@@ -1,9 +1,9 @@
 #pragma once
 #include "cartesian_sensor.h"
 
-class Accelerometer: public Cartesian_Sensor
+class Accelerometer : public Cartesian_Sensor
 {
-public:
+  public:
     Accelerometer(const int &pin);
 
     void read_sensor_value();

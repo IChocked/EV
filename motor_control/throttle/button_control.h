@@ -6,7 +6,7 @@
 
 class ButtonThrottle : public Throttle
 {
-private:
+  private:
     int m_timeToFull;
     bool m_isPressed;
     int m_pressStart;
@@ -17,7 +17,7 @@ private:
         EXPONENTIAL
     };
 
-public:
+  public:
     ButtonThrottle(const int &pin, int timeToFull = 5);
     void compute_motor_value();
     int mappingFunction(int val, m_map_type mapType);

@@ -3,10 +3,10 @@
 
 class CurrentSensor : public Sensor
 {
-public:
+  public:
     CurrentSensor(const int &pin);
 
     void read_sensor_value();
 };
 
-#endif //CURRENT_SENSOR
+#endif // CURRENT_SENSOR

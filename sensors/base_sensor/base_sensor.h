@@ -3,7 +3,7 @@
 
 class Sensor
 {
-public:
+  public:
     Sensor(const int &pin);
 
     virtual void read_sensor_value() = 0; // this needs to be implemented differently for each sensor
@@ -11,10 +11,10 @@ public:
     double get_raw_value() const; // should only be used to debug
     double get_sensor_value() const;
 
-protected:
+  protected:
     double m_raw_value;
     double m_sensor_value;
     int m_sensor_pin;
 };
 
-#endif //BASE_SENSOR
+#endif // BASE_SENSOR

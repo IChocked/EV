@@ -16,8 +16,8 @@ struct SerialStats
 
 class Session
 {
-public:
-    //interface
+  public:
+    // interface
     Session(const int POT_PIN, const int *DRV_PIN, bool paused, bool drive_w_pot = false);
     void init_temp_sense(const int *TEMP_PINS);
     void check_for_command();
@@ -27,12 +27,12 @@ public:
     void drive_magnet();
     void print_report();
 
-private:
-    //private functions
+  private:
+    // private functions
     bool process_command();
     int ramp_signal(int sig_in);
 
-    //data members
+    // data members
     int m_pot_pin;
     int m_temp_pins[NUM_TEMP_SENSE];
     float m_temps[NUM_TEMP_SENSE];

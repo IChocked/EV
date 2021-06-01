@@ -8,7 +8,7 @@ const double maxVoltage = 4.2;
 
 class VariableThrottle : public Throttle
 {
-public:
+  public:
     VariableThrottle(const int &pin);
     void compute_motor_value();
 };
