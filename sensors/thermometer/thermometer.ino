@@ -5,12 +5,12 @@
 
 MPL3115A2 thermometer;
 
-Thermometer::Thermometer(const int &pin): Sensor(pin) {
+Thermometer::Thermometer(const int &pin) : Sensor(pin) {
   thermometer.begin();
   thermometer.setModeAltimeter();
   // recommended setup from sample code
   thermometer.setOversampleRate(7); // Set Oversample to the recommended 128
-  thermometer.enableEventFlags(); // Enable all three pressure and temp even  
+  thermometer.enableEventFlags();   // Enable all three pressure and temp even
 }
 
 void Thermometer::read_sensor_value() {

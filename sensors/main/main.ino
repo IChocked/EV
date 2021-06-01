@@ -1,30 +1,31 @@
-#include <Wire.h>
 #include <SPI.h>
+#include <Wire.h>
 
 #include "accelerometer.h"
 #include "altimeter.h"
 #include "gps.h"
 #include "gyroscope.h"
 
-//Function definitions
+// Function definitions
 void read_all_sensors();
 void print_all_sensors();
 
 void setup() {
-  Wire.begin(0x60);        // Join i2c bus
-  Wire.begin(0x6A);        // Join i2c bus
-  Wire.begin(0x6B);        // Join i2c bus
-  Serial.begin(9600);  // Start serial for output
+  Wire.begin(0x60);   // Join i2c bus
+  Wire.begin(0x6A);   // Join i2c bus
+  Wire.begin(0x6B);   // Join i2c bus
+  Serial.begin(9600); // Start serial for output
 
-  //Create sensors
+  // Create sensors
   const int num_sensors = 5;
-  
-  accelerometer* myAccelerometer = new accelerometer(0x60);
-  altimeter* myAltimeter = new altimeter(0x6A);
-  gps* myGps = new gps(0x6B);
-  gyroscope* myGyroscope = new gyroscope(0x60);
-  thermometer* myThermometer = new thermometer(0x6A);
-  base_sensor* mySensors[num_sensors] = {myAccelerometer, myAltimeter, myGps, myGyroscope, myThermometer};
+
+  accelerometer *myAccelerometer = new accelerometer(0x60);
+  altimeter *myAltimeter = new altimeter(0x6A);
+  gps *myGps = new gps(0x6B);
+  gyroscope *myGyroscope = new gyroscope(0x60);
+  thermometer *myThermometer = new thermometer(0x6A);
+  base_sensor *mySensors[num_sensors] = {myAccelerometer, myAltimeter, myGps,
+                                         myGyroscope, myThermometer};
 }
 
 void loop() {
@@ -33,23 +34,23 @@ void loop() {
 }
 
 void read_all_sensors() {
-  for(int i = 0; i < num_sensors; i++) {
+  for (int i = 0; i < num_sensors; i++) {
     mySensors[i].read_sensor_value();
   }
 }
 
 void print_all_sensors() {
-  //prints a single string containing all sensor values
-  //to be decoded by python script
+  // prints a single string containing all sensor values
+  // to be decoded by python script
 
-  //expect precision issues to # of digits
-  //python script currently expects 2 digits per datum
+  // expect precision issues to # of digits
+  // python script currently expects 2 digits per datum
 
   Serial.print("Lat:");
   Serial.print(myGps.get_latitude());
   Serial.print("Lng:");
   Serial.print(myGps.get_longitude());
-  
+
   Serial.print("Cur:");
   Serial.print(rand() % 90 + 10);
   Serial.print("Pwr:");
@@ -64,19 +65,19 @@ void print_all_sensors() {
   Serial.print(GyCoordinates.y);
   Serial.print("GyZ:");
   Serial.print(GyCoordinates.z);
-  
+
   Serial.print("Hea:");
   Serial.print(rand() % 90 + 10);
   Serial.print("Pit:");
   Serial.print(rand() % 90 + 10);
   Serial.print("Rol:");
   Serial.print(rand() % 90 + 10);
-  
+
   Serial.print("Alt:");
   Serial.print(myAltimeter.get_sensor_value());
   Serial.print("Tem:");
-  Serial.print(myThermometer.get_sensor_value()); 
-  
+  Serial.print(myThermometer.get_sensor_value());
+
   Serial.print("Rpm:");
   Serial.print(rand() % 90 + 10);
   Serial.print("Thr:");
@@ -84,7 +85,8 @@ void print_all_sensors() {
   Serial.print("Spd:");
   Serial.print(myGps.get_speed());
 
-  Cartesian_Coordinates AcCoordinates = myAccelerometer.get_sensor_coordinates();
+  Cartesian_Coordinates AcCoordinates =
+      myAccelerometer.get_sensor_coordinates();
   Serial.print("AcX:");
   Serial.print(AcCoordinates.x);
   Serial.print("AcY:");

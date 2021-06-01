@@ -7,7 +7,6 @@ int sum = 0;
 int clock = 0;
 int avg = 0;
 
-
 void setup() {
   // put your setup code here, to run once:
   pinMode(ledPin, OUTPUT);
@@ -22,24 +21,21 @@ long TP_init() {
   return measurement;
 }
 
-
 void loop() {
   // put your main code here, to run repeatedly:
-    while (clock < 1000)
-    {
-        long measurement = TP_init();
-        delay(40);
+  while (clock < 1000) {
+    long measurement = TP_init();
+    delay(40);
 
+    digitalWrite(ledPin, HIGH);
 
-        digitalWrite(ledPin, HIGH);
-    
-        sum += measurement;
-        clock += 50;
-    }
+    sum += measurement;
+    clock += 50;
+  }
 
-    avg = sum / 20;
-    Serial.println("Average after 1 sec: " + avg);
+  avg = sum / 20;
+  Serial.println("Average after 1 sec: " + avg);
 
-    sum = 0;
-    clock = 0;
+  sum = 0;
+  clock = 0;
 }
