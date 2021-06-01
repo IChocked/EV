@@ -60,11 +60,11 @@ jobs:
           git config user.name Brian
           git config user.email bharde@me.com
           echo "finding c++ and arduino files"
-          SRC=$(git ls-tree --full-tree -r HEAD | grep -e "\.\(c\|h\|hpp\|cpp\|ino\)\$" | cut -f 2)
-          echo $SRC
+          (git ls-tree --full-tree -r HEAD | grep -e "\.\(c\|h\|hpp\|cpp\|ino\)\$" | cut -f 2) > temp.txt
+          cat temp.txt
           echo "formatting c++ and arduino files"
-          #echo $SRC | xargs -t -I % clang-format -i %
-          clang-format -style=microsoft -i $SRC
+          cat temp.txt | xargs -t -I % clang-format -i %
+          rm temp.txt
           echo "commiting formatted files and pushing"
           git -A 
           git commit -m "Clang-format reformatting. See actions for more details"
