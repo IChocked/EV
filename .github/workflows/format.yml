@@ -67,5 +67,5 @@ jobs:
           rm /tmp/temp.txt
           echo "commiting formatted files and pushing"
           git add -A 
-          git commit -m "Clang-format reformatting. See actions for more details"
+          git diff-index --quiet HEAD || git commit -m "Clang-format reformatting. See actions for more details"
           git push
