@@ -53,11 +53,18 @@ jobs:
 
       - name: Clang Code Formatter
         run: |
+          echo "installing clang-format"
+          npm install
           npm install clang-format
+          echo "setting up git config"
           git config user.name Brian
           git config user.email bharde@me.com
+          echo "finding c++ and arduino files"
           SRC=$(git ls-tree --full-tree -r HEAD | grep -e "\.\(c\|h\|hpp\|cpp\|ino\)\$" | cut -f 2)
+          echo $SRC
+          echo "formatting c++ and arduino files"
           echo $SRC | xargs -I % clang-format -i %
+          echo "commiting formatted files and pushing"
           git -A 
           git commit -m "Clang-format reformatting. See actions for more details"
           git push
