@@ -18,9 +18,10 @@ void loop() {
   Serial.print(rand() % 90 + 10);
   Serial.print(";Vlt;");
   Serial.print(rand() % 90 + 10);
- 
+
   Serial.print(";GyX;");
-  Serial.print(rand() % 90 + 10);;
+  Serial.print(rand() % 90 + 10);
+  ;
   Serial.print(";GyY;");
   Serial.print(rand() % 90 + 10);
   Serial.print(";GyZ;");
@@ -36,7 +37,7 @@ void loop() {
   Serial.print(";Alt;");
   Serial.print(rand() % 90 + 10);
   Serial.print(";Tem;");
-  Serial.print(rand() % 90 + 10); 
+  Serial.print(rand() % 90 + 10);
 
   Serial.print(";Rpm;");
   Serial.print(rand() % 90 + 10);
@@ -58,5 +59,4 @@ void loop() {
   Serial.print(rand() % 90 + 10);
   Serial.print(";MaZ;");
   Serial.println(rand() % 90 + 10);
-  
 }

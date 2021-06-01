@@ -3,7 +3,6 @@
 int ledPin = 13;
 int EP = 9;
 
-
 void setup() {
   // put your setup code here, to run once:
   pinMode(ledPin, OUTPUT);
@@ -17,7 +16,6 @@ long TP_init() {
   long measurement = pulseIn(EP, HIGH);
   return measurement;
 }
-
 
 void loop() {
   // put your main code here, to run repeatedly:

@@ -7,39 +7,39 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
+
   // printing out data values
-  
+
   Serial.print(rand() % 90 + 10);
   Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  
-  Serial.print(";");
-  Serial.print(rand() % 90 + 10);
-  Serial.print(";");
-  Serial.print(rand() % 90 + 10);
-  Serial.print(";");
-  Serial.print(rand() % 90 + 10);
-  
+
   Serial.print(";");
   Serial.print(rand() % 90 + 10);
   Serial.print(";");
   Serial.print(rand() % 90 + 10);
   Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  
+
   Serial.print(";");
   Serial.print(rand() % 90 + 10);
   Serial.print(";");
   Serial.print(rand() % 90 + 10);
   Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  
+
   Serial.print(";");
   Serial.print(rand() % 90 + 10);
   Serial.print(";");
-  Serial.print(rand() % 90 + 10); 
-  
+  Serial.print(rand() % 90 + 10);
+  Serial.print(";");
+  Serial.print(rand() % 90 + 10);
+
+  Serial.print(";");
+  Serial.print(rand() % 90 + 10);
+  Serial.print(";");
+  Serial.print(rand() % 90 + 10);
+
   Serial.print(";");
   Serial.print(rand() % 90 + 10);
   Serial.print(";");

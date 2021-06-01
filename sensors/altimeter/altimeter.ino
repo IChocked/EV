@@ -5,12 +5,12 @@
 
 MPL3115A2 altimeter;
 
-Altimeter::Altimeter(const int &pin): Sensor(pin) {
+Altimeter::Altimeter(const int &pin) : Sensor(pin) {
   altimeter.begin();
   altimeter.setModeAltimeter();
   // recommended setup from sample code
   altimeter.setOversampleRate(7); // Set Oversample to the recommended 128
-  altimeter.enableEventFlags(); // Enable all three pressure and temp even  
+  altimeter.enableEventFlags();   // Enable all three pressure and temp even
 }
 
 void Altimeter::read_sensor_value() {
