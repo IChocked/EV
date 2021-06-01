@@ -36,6 +36,8 @@ jobs:
       steps:
       - name: Check out the code
         uses: actions/checkout@v2
+        with:
+          ref: ${GITHUB_REF##*/}
 
       - name: install clang-format with npm
         uses: actions/setup-node@v2
@@ -57,4 +59,4 @@ jobs:
           echo "commiting formatted files and pushing"
           git add -A 
           git diff-index --quiet HEAD || git commit -m "Clang-format reformatting. See actions for more details"
-          git push
+          git diff-index --quiet HEAD || git push
